@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <title>AR Viewer</title>
 </head>
 <style>
     * {
@@ -22,12 +22,53 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: 94vh;
+    }
+
+    h1,p{
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     }
 </style>
 <body>
+
+    <br>
+    <h1>Bekijk 3D Object in AR</h1>
     <div>
-        <a href="Pumpkin-AR.usdz" rel="ar"><img src="6CMb_Quinten_GameDesign_PR03_Pumpkin.png" alt="Pumpkin"></a>
+        <a id="arLink" href="#">
+            <img id="arImage" src="6CMb_Quinten_GameDesign_PR03_Pumpkin.png" alt="Pumpkin">
+        </a>
     </div>
+
+    <script>
+        // Functie om te detecteren welk type apparaat de gebruiker heeft
+        function detectDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            if (/android/.test(userAgent)) {
+                return 'android';
+            } else if (/iphone|ipad|ipod/.test(userAgent)) {
+                return 'ios';
+            }
+            return 'unknown';
+        }
+
+        // AR link instellen op basis van het apparaat
+        const arLink = document.getElementById('arLink');
+        const device = detectDevice();
+
+        if (device === 'android') {
+            arLink.href = "Pumpkin-AR.glb"; // Vervang door jouw GLB-pad
+            arLink.setAttribute('rel', 'ar');
+            arLink.style.display = "block";
+        } else if (device === 'ios') {
+            arLink.href = "Pumpkin-AR.usdz"; // Vervang door jouw USDZ-pad
+            arLink.setAttribute('rel', 'ar');
+            arLink.style.display = "block";
+        } else {
+            arLink.innerHTML = "<p>Dit apparaat ondersteunt geen AR.</p>";
+        }
+    </script>
 </body>
 </html>
