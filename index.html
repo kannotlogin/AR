@@ -59,7 +59,7 @@
         const device = detectDevice();
 
         if (device === 'android') {
-            arLink.href = "intent://arvr.google.com/scene-viewer/1.0?file=Pumpkin-AR.glb#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end="; // Vervang door jouw GLB-pad
+            arLink.href = "intent://arvr.google.com/scene-viewer/1.0?file=https://github.com/kannotlogin/AR/blob/main/Pumpkin-AR.glb#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end="; // Vervang door jouw GLB-pad
             arLink.style.display = "block";
         } else if (device === 'ios') {
             arLink.href = "Pumpkin-AR.usdz"; // Vervang door jouw USDZ-pad
